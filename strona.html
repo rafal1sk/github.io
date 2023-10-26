@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperatura</title>
+</head>
+<body>
+  <h1>Temperatura: <span id="temperature">?</span> &deg;C</h1>
+  <script>
+    function updateTemperature() {
+      fetch('/temperature')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('temperature').textContent = data;
+        });
+    }
+
+    setInterval(updateTemperature, 5000); // Aktualizuj co 5 sekund
+    updateTemperature();
+  </script>
+</body>
+</html>
